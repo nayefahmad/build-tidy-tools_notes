@@ -71,3 +71,59 @@ factor(letters)
 ?tolower
 
 
+#' # Enums 
+#' 
+#' This is relevant when an arg can take a small number of values that can 
+#' be enumerated. 
+#' 
+
+?trimws()
+
+# Args: trimws(x, which = c("both", "left", "right"), whitespace = "[ \t\r\n]")
+# Q: what's going on with the char vector passed to which as a default value? 
+
+?str_trunc()
+?rank()
+
+#' The first element of the char vector is the default. The user can see the
+#' default and all other valid arguments. If user enters an invalid value, they
+#' will get an informative error message. 
+#' 
+
+
+#' # Using the `...`
+#' 
+#' Look into the {ellipsis} package - safer than using the `...`
+#' 
+#' 
+
+#' # Type-stability
+#' 
+
+y <- sum(x)
+
+#' without knowing anything about x or y, if we know the above code works, then
+#' we know that:
+#' 
+#' * x is numeric or logical vector (or matrix), any length
+#' * y is numeric of length 1. 
+#' 
+
+
+x <- c(TRUE, FALSE)
+y <- mean(x); y; class(y)
+
+x <- c("TRUE", "FALSE")
+y <- mean(x); y; class(y)
+
+x <- factor("TRUE", "FALSE")
+y <- mean(x); y; class(y)
+
+#' Note that mean( ) throws warnings, not errors 
+#' 
+
+
+
+
+
+
