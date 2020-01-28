@@ -21,6 +21,8 @@
 #' 
 #' Interface of functions: name, args, output, side effects, etc.
 
+library(stringr)
+
 #' We'll look at interfaces through the lens of regex/string manipulation
 #' function: i.e. functions like sub(), gsub(), regexpr(), etc.
 #'
@@ -36,11 +38,36 @@
 #' * regexpr() = str_locate()
 #' 
 
+#' # Grouping args according to intent/frequency/...? 
+#' 
+
+?strsplit
+?grepl
 
 
 
+#' # Which args are required/optional? 
+#' 
+
+?lm  # required: formula (in general, the ones without defaults are required) 
+?sample  # required: 1 of them 
+?diag  # required: nrow if x not specified .... it's complicated  
+?str_replace_all  # required: all of them?? 
+
+#' Hadley: There is a `missing` fn ... THAT SHOULD ALMOST NEVER BE USED
+#' 
 
 
+#' # Hidden arguments 
+#' 
+#' These are things that change the output of the fn, but aren't specified at calling time. 
 
+data.frame(x = "abc")$x  # returns a factor, unless options(stringsAsFactors = FALSE)
+tolower("I")  # gives a diff thing if your locale is Turkey 
+factor(letters)
+
+
+?data.frame
+?tolower
 
 
