@@ -75,4 +75,58 @@ sloop::s3_dispatch(print(x))
 sloop::s3_get_method(print.Date)
 
 
+#' # Motivation for S3 in package development
+#'
+#' Take advantage of existing generic `print()`. If you are returning a
+#' ocmplicated object like a list, then creating a new S3 class let's us write a
+#' nice print method,
+#' 
+#' 
+
+#' # creating a new class
+#' 
+
+new_foo <- function(){
+    x <- list()
+    class(x) <- "foo"
+    x
+}
+
+my_foo <- new_foo()
+my_foo
+
+
+#' We can now define a new method for objects of class "foo". 
+#' 
+
+print.foo <- function(x, ...){
+    cat("Hello, you printed a foo")
+}
+
+print(my_foo)
+
+
+
+
+#' # Defining a new generic 
+#' 
+
+# First create the generic function 
+bizarro <- function(x){
+    UseMethod()
+}
+
+
+#' then define methods for specific types of inputs.
+#' 
+
+
+bizarro.numeric <- function(x){
+    invisible(x*(-1))
+    
+}
+
+
+x <- 1:10
+print(x)
 
